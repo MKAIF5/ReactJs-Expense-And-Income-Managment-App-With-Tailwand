@@ -2,36 +2,36 @@ function App() {
 
   return (
     <>
-      <div className="my-14">
-        <h1 className="text-black text-center text-2xl">Expence Managment System</h1>
+      <div className="my-36">
+        <div className="my-14">
+          <h1 className="text-black text-center text-3xl">Expence Managment System</h1>
+        </div>
+        <div className="flex justify-center gap-1 ">
+          <div className="w-44 text-center p-6 border-solid border border-gray-300">
+            <p className="font-medium text-xl">Total Expense</p>
+            <p className="text-red-700 font-semibold">00.00</p>
+          </div>
+          <div className="w-44 text-center p-6 border-solid border border-gray-300">
+            <p className="font-medium text-xl"> Total Income</p>
+            <p className="text-green-400 font-semibold">00.00</p>
+          </div>
+          <div className="w-44 text-center p-6 border-solid border border-gray-300">
+            <p className="font-medium text-xl">Balance</p>
+            <p className="text-yellow-500 font-semibold">00.00</p>
+          </div>
+        </div>
         <br />
-        <h1 className="text-black text-center text-4xl">0.00</h1>
-      </div>
-      <div className="flex justify-center gap-1 ">
-        <div className="w-44 text-center p-6 border-solid border border-gray-300">
-          <p className="font-medium text-xl">Total Expense</p>
-          <p className="text-red-700 font-semibold">00.00</p>
+        <div className="flex justify-center gap-3">
+          <input className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
+            type="text"
+            placeholder="Enter Your Number"
+          />
+          <select>
+            <option>Expense</option>
+            <option>Income</option>
+          </select>
+          <button className="bg-orange-500 p-2 rounded-xl text-white font-semibold">Submit</button>
         </div>
-        <div className="w-44 text-center p-6 border-solid border border-gray-300">
-          <p className="font-medium text-xl"> Total Income</p>
-          <p className="text-green-400 font-semibold">00.00</p>
-        </div>
-        <div className="w-44 text-center p-6 border-solid border border-gray-300">
-          <p className="font-medium text-xl">Balance</p>
-          <p className="text-yellow-500 font-semibold">00.00</p>
-        </div>
-      </div>
-      <br />
-      <div className="flex justify-center gap-3">
-        <input className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
-          type="text"
-          placeholder="Enter Your Number"
-        />
-        <select>
-          <option>Expense</option>
-          <option>Income</option>
-        </select>
-        <button className="bg-orange-500 p-2 rounded-xl text-white font-semibold">Submit</button>
       </div>
     </>
 
