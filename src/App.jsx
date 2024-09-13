@@ -21,14 +21,17 @@ function App() {
           <p className="text-yellow-500 font-semibold">00.00</p>
         </div>
       </div>
-
-      <div>
-        <input className="border-solid border border-black" type="text" name="" id="" />
+      <br />
+      <div className="flex justify-center gap-3">
+        <input className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
+          type="text"
+          placeholder="Enter Your Number"
+        />
         <select>
           <option>Expense</option>
           <option>Income</option>
         </select>
-        <button>Submit</button>
+        <button className="bg-orange-500 p-2 rounded-xl text-white font-semibold">Submit</button>
       </div>
     </>
 
