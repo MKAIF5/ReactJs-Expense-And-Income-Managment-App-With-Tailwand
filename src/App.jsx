@@ -1,10 +1,15 @@
+import { useState } from "react"
+
 function App() {
+
+  const [amount , setAmount] = useState(0);
+  const [type , setType] = useState("Income")
 
   return (
     <>
       <div className="my-36">
         <div className="my-14">
-          <h1 className="text-black text-center text-3xl">Expence Managment System</h1>
+          <h1 className="text-black text-center text-4xl">Expence Managment System</h1>
         </div>
         <div className="flex justify-center gap-1 ">
           <div className="w-44 text-center p-6 border-solid border border-gray-300">
@@ -22,13 +27,17 @@ function App() {
         </div>
         <br />
         <div className="flex justify-center gap-3">
-          <input className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
-            type="text"
-            placeholder="Enter Your Number"
+          <input
+            className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
+            type="number"
+            value={amount}
           />
-          <select>
-            <option>Expense</option>
-            <option>Income</option>
+          <select
+           value={type}
+           onChange={(event) => setType(event.target.value)}
+           >
+            <option value="Expense">Expense</option>
+            <option value="Income">Income</option>
           </select>
           <button className="bg-orange-500 p-2 rounded-xl text-white font-semibold">Submit</button>
         </div>
