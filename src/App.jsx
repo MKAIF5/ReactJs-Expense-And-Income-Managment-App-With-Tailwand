@@ -3,7 +3,7 @@ import { useState } from "react"
 function App() {
 
   const [amount, setAmount] = useState(0);
-  const [type, setType] = useState("Income");
+  const [type, setType] = useState("income");
   const [transaction , setTransactions] = useState([]);
 
     let handleTransactions = () => {
@@ -64,14 +64,22 @@ function App() {
             value={type}
             onChange={(event) => setType(event.target.value)}
           >
-            <option value="Expense">Expense</option>
-            <option value="Income">Income</option>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
           </select>
           <button
             className="bg-orange-500 p-2 rounded-xl text-white font-semibold"
-            onClick={handleTransactions}
-          >
-            Submit</button>
+            onClick={handleTransactions}> Submit</button>
+        <ul>
+        {transaction.map((data, index) => {
+              return (
+                <li key={index}>
+                  {data.amount} {data.type}
+                  <button onClick={()=>delExpense(index)}>Delete</button>
+                </li>
+              );
+            })}
+        </ul>
         </div>
       </div>
     </>
@@ -79,96 +87,3 @@ function App() {
   )
 }
 export default App
-
-
-
-// import { useState } from "react";
-
-// function App() {
-//   let [amount, setAmount] = useState(0);
-//   let [type, setType] = useState("income");
-//   let [transaction, setTransactions] = useState([]);
-
-//   let handleTransactions = () => {
-//     console.log("amount=>", amount);
-//     console.log("type=>", type);
-//     setTransactions([...transaction, { amount, type }]);
-//     setAmount(0);
-//   };
-
-//   let totalIncome = transaction.reduce((acc, curr)=>{
-//     return curr.type == 'income' ? acc + Number(curr.amount) : acc
-//   }, 0)
- 
-//   let totalExpense = transaction.reduce((acc, curr)=>{
-//     return curr.type == 'expense' ? acc + Number(curr.amount) : acc
-//   }, 0)
-
-//   let balance = totalIncome - totalExpense
-
-//   let delExpense = (index)=>{
-
-//     let copy = [...transaction]
-//     copy.splice(index, 1)
-//     setTransactions(copy)
-
-//   }
-
-
-//   return (
-//     <>
-//       <h1>Expense Management System</h1>
-
-//       <div>
-//         <div style={{display:'flex', justifyContent:'space-around'}}>
-//           <div>
-//             <p>Total Income</p>
-//             <p>{totalIncome}</p>
-//           </div>
-//           <div>
-//             <p>Total Expense</p>
-//             <p>{totalExpense}</p>
-//           </div>
-//           <div>
-//             <p>Balance</p>
-//             <p>{balance}</p>
-//           </div>
-//         </div>
-
-//         <input
-//           onChange={(e) => setAmount(e.target.value)}
-//           value={amount}
-//           type="text"
-//           name=""
-//           id=""
-//         />
-//         <select
-//           onChange={(e) => setType(e.target.value)}
-//           value={type}
-//           name=""
-//           id=""
-//         >
-//           <option value="income">income</option>
-//           <option value="expense">expense</option>
-//         </select>
-//         <button onClick={handleTransactions}>Submit</button>
-
-//         <div>
-//           <ul>
-//             {transaction.map((data, index) => {
-//               return (
-//                 <li key={index}>
-//                   {data.amount} {data.type}
-//                   <button onClick={()=>delExpense(index)}>Delete</button>
-//                   <button>Edit</button>
-//                 </li>
-//               );
-//             })}
-//           </ul>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
