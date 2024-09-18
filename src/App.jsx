@@ -5,11 +5,6 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("Income");
   const [transaction , setTransactions] = useState([]);
-  
-  const buttonClick = () => {
-    console.log(amount, "amount");
-    setAmount("")
-  }
 
     let handleTransactions = () => {
     console.log("amount=>", amount);
@@ -74,7 +69,7 @@ function App() {
           </select>
           <button
             className="bg-orange-500 p-2 rounded-xl text-white font-semibold"
-            onClick={buttonClick}
+            onClick={handleTransactions}
           >
             Submit</button>
         </div>
