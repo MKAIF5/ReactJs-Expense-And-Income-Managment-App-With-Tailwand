@@ -23,13 +23,6 @@ function App() {
 
   let balance = totalIncome - totalExpense
 
-  let delExpense = (index)=>{
-
-    let copy = [...transaction]
-    copy.splice(index, 1)
-    setTransactions(copy)
-
-  }
 
   return (
 
@@ -70,20 +63,11 @@ function App() {
           <button
             className="bg-orange-500 p-2 rounded-xl text-white font-semibold"
             onClick={handleTransactions}> Submit</button>
-        <ul>
-        {transaction.map((data, index) => {
-              return (
-                <li key={index}>
-                  {data.amount} {data.type}
-                  <button onClick={()=>delExpense(index)}>Delete</button>
-                </li>
-              );
-            })}
-        </ul>
         </div>
       </div>
     </>
 
   )
 }
+
 export default App
