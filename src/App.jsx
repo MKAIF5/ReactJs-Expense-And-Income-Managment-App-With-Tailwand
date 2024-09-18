@@ -4,10 +4,36 @@ function App() {
 
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("Income");
-  const [transaction , setTransactions] = useState([])
+  const [transaction , setTransactions] = useState([]);
+  
   const buttonClick = () => {
     console.log(amount, "amount");
     setAmount("")
+  }
+
+    let handleTransactions = () => {
+    console.log("amount=>", amount);
+    console.log("type=>", type);
+    setTransactions([...transaction, { amount, type }]);
+    setAmount(0);
+  };
+
+  let totalIncome = transaction.reduce((acc, curr)=>{
+    return curr.type == 'income' ? acc + Number(curr.amount) : acc
+  }, 0)
+ 
+  let totalExpense = transaction.reduce((acc, curr)=>{
+    return curr.type == 'expense' ? acc + Number(curr.amount) : acc
+  }, 0)
+
+  let balance = totalIncome - totalExpense
+
+  let delExpense = (index)=>{
+
+    let copy = [...transaction]
+    copy.splice(index, 1)
+    setTransactions(copy)
+
   }
 
   return (
@@ -19,23 +45,23 @@ function App() {
         </div>
         <div className="flex justify-center gap-1 ">
           <div className="w-44 text-center p-6 border-solid border border-gray-300">
-            <p className="font-medium text-xl">Total Expense</p>
-            <p className="text-red-700 font-semibold">00.00</p>
+            <p className="font-medium text-xl"> Total Income</p>
+            <p className="text-green-400 font-semibold">{totalIncome}</p>
           </div>
           <div className="w-44 text-center p-6 border-solid border border-gray-300">
-            <p className="font-medium text-xl"> Total Income</p>
-            <p className="text-green-400 font-semibold">00.00</p>
+            <p className="font-medium text-xl">Total Expense</p>
+            <p className="text-red-700 font-semibold">{totalExpense}</p>
           </div>
           <div className="w-44 text-center p-6 border-solid border border-gray-300">
             <p className="font-medium text-xl">Balance</p>
-            <p className="text-yellow-500 font-semibold">00.00</p>
+            <p className="text-yellow-500 font-semibold">{balance}</p>
           </div>
         </div>
         <br />
         <div className="flex justify-center gap-3">
           <input
             onChange={(event) => setAmount(event.target.value)}
-            className=" p-2 w-96 bg-gray-100 rounded-2xl text-lg outline-none"
+            className=" p-2 w-96 bg-gray-200 rounded-2xl text-lg outline-none"
             type="number"
             value={amount}
           />
